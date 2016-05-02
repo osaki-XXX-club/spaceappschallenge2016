@@ -8,7 +8,6 @@ public class NewBehaviourScript : MonoBehaviour {
 	public Texture texture3;
 	public Texture texture4;
 	public Texture texture5;
-	public Texture texture6;
 	public int textureNum = 0;
 
 
@@ -26,43 +25,6 @@ public class NewBehaviourScript : MonoBehaviour {
          this.labelStyle = new GUIStyle();
          this.labelStyle.fontSize = Screen.height / 22;
          this.labelStyle.normal.textColor = Color.white;
-     
-		Texture targetTexture = texture0;
-		int tatamiFlag = 0;
-		switch (textureNum) {
-		case 0:
-			targetTexture = texture0;
-			tatamiFlag = 1;
-			break;
-		case 1:
-			targetTexture = texture1;
-			tatamiFlag = 0;
-			break;
-		case 2:
-			targetTexture = texture2;
-			tatamiFlag = 0;
-			break;
-		case 3:
-			targetTexture = texture3;
-			tatamiFlag = 0;
-			break;
-		case 4:
-			targetTexture = texture4;
-			tatamiFlag = 0;
-			break;
-		case 5:
-			targetTexture = texture5;
-			tatamiFlag = 0;
-			break;
-		case 6:
-			targetTexture = texture6;
-			tatamiFlag = 0;
-			break;
-		default:
-			break;
-		}
-		GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
-		GameObject.Find("Cube").transform.localScale = new Vector3(14 * tatamiFlag, 7 * tatamiFlag, 10 * tatamiFlag);
 	}
 
      // Update is called once per frame
@@ -73,9 +35,49 @@ public class NewBehaviourScript : MonoBehaviour {
 
             frameCount++;
            if (frameCount % 100 == 0) {
-               if ( System.Math.Round(this.acceleration.x, 3) < -0.5 || 0.5 < System.Math.Round(this.acceleration.x, 3)) {
-                 Singleton<SoundPlayer>.instance.playSE( "harisen" );
-               }
+			if (System.Math.Round (this.acceleration.x, 3) < -0.5 || 0.5 < System.Math.Round (this.acceleration.x, 3)) {
+				Singleton<SoundPlayer>.instance.playSE ("harisen");
+			} else if (System.Math.Round (this.acceleration.z, 3) < -0.9) {
+					Texture targetTexture = texture0;
+					int tatamiFlag = 0;
+					switch (textureNum) {
+					case 0:
+						targetTexture = texture0;
+						tatamiFlag = 1;
+						textureNum++;
+						break;
+					case 1:
+						targetTexture = texture1;
+						tatamiFlag = 1;
+						textureNum++;
+						break;
+					case 2:
+						targetTexture = texture2;
+						tatamiFlag = 1;
+						textureNum++;
+						break;
+					case 3:
+						targetTexture = texture3;
+						tatamiFlag = 0;
+						textureNum++;
+						break;
+					case 4:
+						targetTexture = texture4;
+						tatamiFlag = 0;
+						textureNum++;
+						break;
+					case 5:
+						targetTexture = texture5;
+						tatamiFlag = 0;
+						textureNum = 0;
+						break;
+					default:
+						break;
+					}
+					GetComponent<Renderer> ().material.SetTexture ("_MainTex", targetTexture);
+					GameObject.Find ("Cube").transform.localScale = new Vector3 (14 * tatamiFlag, 7 * tatamiFlag, 10 * tatamiFlag);
+
+			}
                frameCount = 0;
             }
 
