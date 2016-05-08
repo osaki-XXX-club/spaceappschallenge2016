@@ -16,6 +16,6 @@
   * Open "Assets/The ZEN.unity"
 
 5. Build for your using os
-  (1) Switch platform at "[File]→[Build Settings…]"
-  (2) Click "Build And Run"
+  1. Switch platform at "[File]→[Build Settings…]"
+  2. Click "Build And Run"
 
