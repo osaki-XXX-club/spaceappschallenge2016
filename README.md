@@ -2,6 +2,9 @@
 
 * Introduction site is [here](https://2016.spaceappschallenge.org/challenges/mars/space-recreation/projects/the-zen)
 
+## for Android
+* [https://play.google.com/store/apps/details?id=the.zen](https://play.google.com/store/apps/details?id=the.zen)
+
 ## How to build
 
 1. Download Unity Installer
